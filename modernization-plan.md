@@ -62,7 +62,7 @@ Stage 3 (Validate) →  End-to-end validation + Pull Request
 
 ### Sub-Task 1 — Stage 1: Analyze Legacy App and Create GitHub Epics + Stories
 
-**Status:** `[ ] pending`
+**Status:** `[x] done`
 
 **Intent:**
 Analyze the full legacy application (already done — see summary above), then create GitHub Issues in the user's `origin` repository: one Epic per component (Backend, Frontend, Database, DevOps) and granular Stories linked to their Epic. Each Story has acceptance criteria. Present the full plan to the user and ask design questions before creating Issues.
@@ -81,42 +81,42 @@ Analyze the full legacy application (already done — see summary above), then c
 
 **Story Breakdown by Epic:**
 
-_Database Epic:_
-- DB-1: Document existing SQLite schema and seed data
-- DB-2: Create `modern/database/init.sh` to set up SQLite for the modern app (read-only source; `init.sh` copies/symlinks)
+_Database Epic (Issue #1):_
+- DB-1: Document existing SQLite schema and seed data — Issue #5
+- DB-2: Create `modern/database/init.sh` to set up SQLite for the modern app — Issue #6
 
-_Backend Epic:_
-- BE-1: Scaffold Spring Boot 3 / Java 21 project under `modern/backend/`
-- BE-2: Configure SQLite datasource + JPA/JDBC
-- BE-3: Implement Employee authentication + JWT token issuance
-- BE-4: JWT filter + Spring Security resource server config
-- BE-5: Customer API (search by Customer ID / Account Number)
-- BE-6: Account API (get account details)
-- BE-7: Deposit API
-- BE-8: Withdrawal API
-- BE-9: Fund Transfer API (atomic)
-- BE-10: Transaction History API (filterable by type)
-- BE-11: BCrypt-migrate employee passwords on first start (keep DB otherwise intact)
-- BE-12: Backend unit + integration tests (JUnit 5, isolated test DB)
+_Backend Epic (Issue #2):_
+- BE-1: Scaffold Spring Boot 3 / Java 21 project under `modern/backend/` — Issue #7
+- BE-2: Configure SQLite datasource + Spring Data JDBC — Issue #8
+- BE-3: Implement Employee authentication + JWT token issuance — Issue #9
+- BE-4: JWT filter + Spring Security resource server config — Issue #10
+- BE-5: Customer API (search by Customer ID / Account Number) — Issue #11
+- BE-6: Account API (get account details) — Issue #12
+- BE-7: Deposit API — Issue #13
+- BE-8: Withdrawal API — Issue #14
+- BE-9: Fund Transfer API (atomic) — Issue #15
+- BE-10: Transaction History API (filterable by type) — Issue #16
+- BE-11: BCrypt-migrate employee passwords on first start (keep DB otherwise intact) — Issue #17
+- BE-12: Backend unit + integration tests (JUnit 5, isolated test DB) — Issue #18
 
-_Frontend Epic:_
-- FE-1: Scaffold React + TypeScript project under `modern/frontend/` using Vite
-- FE-2: Configure API client (Axios/fetch + JWT header interceptor)
-- FE-3: Login screen
-- FE-4: Protected route + AppContext (authenticated session)
-- FE-5: Dashboard (KPI tiles: total accounts, customers; quick actions)
-- FE-6: Customer Search screen
-- FE-7: Account Detail screen
-- FE-8: Deposit screen
-- FE-9: Withdrawal screen
-- FE-10: Fund Transfer screen
-- FE-11: Transaction History screen
-- FE-12: Frontend component tests (Vitest + Testing Library)
+_Frontend Epic (Issue #3):_
+- FE-1: Scaffold React + TypeScript project under `modern/frontend/` using Vite — Issue #19
+- FE-2: Configure API client (Axios + JWT header interceptor) — Issue #20
+- FE-3: Login screen — Issue #21
+- FE-4: Protected route + AppContext (authenticated session) — Issue #22
+- FE-5: Dashboard (KPI tiles: total accounts, customers; quick actions) — Issue #23
+- FE-6: Customer Search screen — Issue #24
+- FE-7: Account Detail screen — Issue #25
+- FE-8: Deposit screen — Issue #26
+- FE-9: Withdrawal screen — Issue #27
+- FE-10: Fund Transfer screen — Issue #28
+- FE-11: Transaction History screen — Issue #29
+- FE-12: Frontend component tests (Vitest + Testing Library) — Issue #30
 
-_DevOps Epic:_
-- DO-1: `modern/README.md` with local run instructions
-- DO-2: Docker Compose (backend + frontend) — optional if approved
-- DO-3: SHA-256 integrity check script for `legacybank.db` (confirms legacy unchanged)
+_DevOps Epic (Issue #4):_
+- DO-1: `modern/README.md` with local run instructions — Issue #31
+- DO-2: Docker Compose (backend + frontend) — Issue #32
+- DO-3: SHA-256 integrity check script for `legacybank.db` (confirms legacy unchanged) — Issue #33
 
 **Relevant Context:**
 - [`legacy_banking_modernization_workshop.md`](legacy_banking_modernization_workshop.md) — workshop Stage 1 prompt
