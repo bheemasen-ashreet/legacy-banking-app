@@ -128,7 +128,7 @@ _DevOps Epic (Issue #4):_
 
 ### Sub-Task 2 — Backend: Spring Boot Scaffold + SQLite Datasource
 
-**Status:** `[ ] pending`
+**Status:** `[x] done`
 
 **Intent:**
 Create the Spring Boot 3 / Java 21 project skeleton under `modern/backend/` and wire it to the existing SQLite `legacybank.db`. This is the foundation that all other backend stories build on.
@@ -146,6 +146,15 @@ Create the Spring Boot 3 / Java 21 project skeleton under `modern/backend/` and 
 3. Create `src/main/resources/application.properties`: datasource URL, driver class, schema validation = none
 4. Create main application class `com.modernbank.BankingApiApplication`
 5. Verify `mvn spring-boot:run` succeeds; commit on feature branch; update GitHub Issue BE-1 and BE-2
+
+**Notes for Sub-Task 3:**
+- `SecurityConfig` currently permits all requests (scaffold placeholder). Replace it with a proper `SecurityFilterChain` that:
+  - Allows `POST /api/auth/login` unauthenticated
+  - Requires a valid Bearer JWT on all other `/api/**` routes
+  - Uses stateless sessions (`SessionCreationPolicy.STATELESS`)
+- SQLite dialect is wired via `JdbcConfig extends AbstractJdbcConfiguration` with `AnsiDialect.INSTANCE` — keep this bean when adding repositories
+- `legacybank.db` confirmed at repo root; path `../../legacybank.db` works from `modern/backend/` working directory
+- Branch: `feature/modernization` — all subsequent sub-tasks commit here
 
 **Relevant Context:**
 - [`src/main/resources/db.properties`](src/main/resources/db.properties) — legacy DB URL pattern (`jdbc:sqlite:legacybank.db`)
